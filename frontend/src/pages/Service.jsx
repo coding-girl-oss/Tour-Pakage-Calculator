@@ -181,7 +181,7 @@ const Service = () => {
                   {service.isEnabled ? "Available" : "Not Available"}
                 </td>
                 <td className="border border-purple-950 px-4 py-2">
-                  <div className="flex">
+                  <div className="flex justify-center">
                     <button onClick={() => handleOpen(service._id)}>
                       <lord-icon
                         src="https://cdn.lordicon.com/nwfpiryp.json"

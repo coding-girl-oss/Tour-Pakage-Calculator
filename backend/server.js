@@ -15,6 +15,7 @@ connectToDb(process.env.MONGO_URI);
 app.use("/api/v1/auth", require("./routes/userRoute"));
 app.use("/api/v1/company", require("./routes/agentRoute"));
 app.use("/api/v1/service", require("./routes/serviceRoute"));
+app.use("/api/v1/hotel", require("./routes/hotelRoute"));
 
 
 app.listen(port, () => {

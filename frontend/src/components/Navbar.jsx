@@ -78,15 +78,15 @@ const Navbar = () => {
           </Link>
           <Link
             className="text-white hover:border-b-2 hover:border-white hover:transition-transform py-2 w-full"
-            to="/service"
+            to="/hotel"
           >
-            Services
+            Hotels
           </Link>
           <Link
             className="text-white hover:border-b-2 hover:border-white hover:transition-transform py-2 w-full"
-            to="/"
+            to="/service"
           >
-            Agents
+            Services
           </Link>
           <Link
             className="text-white hover:border-b-2 md:hidden hover:border-white hover:transition-transform py-2 w-full"

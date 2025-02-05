@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Agent from "./pages/Agent";
 import Login from './pages/Login'
 import Service from "./pages/Service";
+import Hotel from "./pages/Hotel";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/agent" element={<Agent />} />
               <Route path="/service" element={<Service />} />
+              <Route path="/hotel" element={<Hotel/>} />
             </Route>
           </Routes>
           </div>
