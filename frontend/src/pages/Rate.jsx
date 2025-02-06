@@ -9,6 +9,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import RateModal from "../components/RateModal";
 
 const Rate = () => {
+
   const { hotelId } = useParams();
   const [hotel, setHotel] = useState({});
   const [open, setIsOpen] = useState(false);
@@ -80,11 +81,26 @@ const Rate = () => {
     }));
   };
 
+ 
+    
   // fetching rates
   const getRates = async () => {
     try {
       const response = await axiosInstance.get(`/hotel/rate/${hotelId}`);
       setRates(response.data.rates);
+
+      // Deleting expired rates
+      const expiredRates = response.data.rates.filter(rate => new Date(rate.rateEndDate) < new Date());
+      expiredRates.forEach(async (rate) => {
+        try {
+          await axiosInstance.delete(`/hotel/rate/${hotelId}/${rate._id}`);
+          await getRates()
+          toast(`Rate from ${rate.rateStartDate} to ${rate.rateEndDate} deleted due to expiration`);
+        } catch (error) {
+          toast("Error deleting expired rate!");
+        }
+      });
+
     } catch (error) {
       toast("error fetching rates!");
     }
