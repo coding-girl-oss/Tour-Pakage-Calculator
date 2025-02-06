@@ -42,6 +42,23 @@ router.get('/',verifyauth,async(req,res)=>{
    }
 })
 
+// route to get one hotel
+router.get('/:id', verifyauth, async (req, res) => {
+  try {
+    const hotel = await Hotel.findById(req.params.id);
+
+    if (!hotel) {
+      return res.status(404).json({ success: false, message: "Hotel not found" });
+    }
+
+    res.status(200).json({ success: true, hotel });
+  } catch (error) {
+    console.error("Error fetching hotel:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+});
+
+
 // Route to delete hotel of user
 router.delete('/:id',verifyauth,async(req,res)=>{
     try {

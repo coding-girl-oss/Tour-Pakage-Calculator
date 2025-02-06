@@ -17,7 +17,6 @@ const Agent = () => {
   });
   const [isOpen, setIsOpen] = useState(false);
   const { userData } = useSelector((state) => state.user);
-
   const [agents, setAgents] = useState([]);
 
   const handleChange = (e) => {
@@ -28,6 +27,7 @@ const Agent = () => {
     }));
   };
 
+  // fetching agents
   const getAgents = async () => {
     try {
       const response = await axiosInstance.get("/company/fetch-agents");
@@ -39,6 +39,7 @@ const Agent = () => {
     }
   };
 
+  // adding agents
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -98,6 +99,7 @@ const Agent = () => {
     }
   };
 
+  // deleting agent
   const handleDelete = async (agentId) => {
     try {
       const response = await axiosInstance.delete(
@@ -147,18 +149,21 @@ const Agent = () => {
               <Input
                 placeholder="Name:"
                 name="name"
+                required
                 value={form.name}
                 onChange={handleChange}
               />
               <Input
                 placeholder="Email:"
                 name="email"
+                required
                 value={form.email}
                 onChange={handleChange}
               />
               <Input
                 placeholder="Phone:"
                 name="phone"
+                required
                 value={form.phone}
                 onChange={handleChange}
               />
@@ -167,12 +172,14 @@ const Agent = () => {
               <Input
                 placeholder="Company:"
                 name="company"
+                required
                 value={form.company}
                 onChange={handleChange}
               />
               <Input
                 placeholder="Address:"
                 name="address"
+                required
                 value={form.address}
                 onChange={handleChange}
               />

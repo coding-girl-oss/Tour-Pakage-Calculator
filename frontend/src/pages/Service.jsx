@@ -22,6 +22,7 @@ const Service = () => {
     }));
   };
 
+  // adding service
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -46,6 +47,7 @@ const Service = () => {
     }
   };
 
+  // fetching services
   const getServices = async () => {
     try {
       const response = await axiosInstance.get("/service");
@@ -76,6 +78,8 @@ const Service = () => {
       isEnabled: false,
     }); 
   };
+
+  // deleting service
 
   const handleDelete = async (serviceId) => {
     try {
@@ -109,12 +113,14 @@ const Service = () => {
               <Input
                 placeholder="Service Name"
                 name="serviceName"
+                required
                 value={form.serviceName}
                 onChange={handleChange}
               />
               <Input
                 placeholder="Service Price"
                 name="servicePrice"
+                required
                 value={form.servicePrice}
                 onChange={handleChange}
               />

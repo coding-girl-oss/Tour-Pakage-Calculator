@@ -7,12 +7,21 @@ const rateSchema = new mongoose.Schema({
   },
   rateStartDate: { type: Date, required: true },
   rateEndDate: { type: Date, required: true },
-  roomType: {
-    type: String,
-    enum: ["Single", "Double", "Triple", "Quad", "Quint"],
-    required: true,
+  single:{
+    type : String,
   },
-  price: { type: Number, required: true },
+  double:{
+    type : String,
+  },
+  triple:{
+    type : String,
+  },
+  quard:{
+    type : String,
+  },
+  sharing:{
+    type : String,
+  },
 
 },{timestamps:true});
 

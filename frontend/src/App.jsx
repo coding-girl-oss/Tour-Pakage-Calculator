@@ -11,6 +11,7 @@ import Agent from "./pages/Agent";
 import Login from './pages/Login'
 import Service from "./pages/Service";
 import Hotel from "./pages/Hotel";
+import Rate from "./pages/Rate";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
               <Route path="/agent" element={<Agent />} />
               <Route path="/service" element={<Service />} />
               <Route path="/hotel" element={<Hotel/>} />
+              <Route path="/rate/:hotelId" element={<Rate/>} />
             </Route>
           </Routes>
           </div>

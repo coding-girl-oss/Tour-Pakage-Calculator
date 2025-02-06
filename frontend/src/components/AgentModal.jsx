@@ -11,6 +11,7 @@ const AgentModal = ({ closeModal, form,getAgents }) => {
   const [phone, setPhone] = useState(form.phone || "");
   const [isActive, setIsActive] = useState(form.isActive || false);
 
+  // updatong agents
   const handleEdit = async () => {
     try {
       const response = await axiosInstance.put(`/company/update-agent/${form._id}`, {

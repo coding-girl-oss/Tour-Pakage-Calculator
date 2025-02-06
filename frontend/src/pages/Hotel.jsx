@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import Input from "../components/Input";
 import { axiosInstance } from "../utils/axios";
-import toast from "react-hot-toast";
 import HotelModal from "../components/HotelModal";
 
 const Hotel = () => {
   const [hotels, setHotels] = useState([]);
+
   const [open, setIsOpen] = useState(false);
   const [form, setForm] = useState({
     hotelName: "",
@@ -23,6 +25,7 @@ const Hotel = () => {
     }));
   };
 
+  // adding hotel
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -47,12 +50,14 @@ const Hotel = () => {
     }
   };
 
+  // fetching hotels
   const getHotels = async () => {
     try {
       const response = await axiosInstance.get("/hotel/");
       setHotels(response.data.hotels);
     } catch (error) {
-      error.response?.data?.message ||
+      const errorMessage =
+        error.response?.data?.message ||
         "Error fetching hotels. Please try again.";
       toast.error(errorMessage);
     }
@@ -64,17 +69,15 @@ const Hotel = () => {
     setForm(updatedHotel);
   };
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
+  // deleting hotel
   const handleDelete = async (hotelId) => {
     try {
       await axiosInstance.delete(`/hotel/${hotelId}`);
       await getHotels();
       toast("Deleted Successfully!");
     } catch (error) {
-      error.response?.data?.message ||
+      const errorMessage =
+        error.response?.data?.message ||
         "Error deleting hotel. Please try again.";
       toast.error(errorMessage);
     }
@@ -83,14 +86,11 @@ const Hotel = () => {
   useEffect(() => {
     getHotels();
   }, []);
+
   return (
     <>
       {open && (
-        <HotelModal
-          form={form}
-          getHotels={getHotels}
-          handleClose={handleClose}
-        />
+        <HotelModal form={form} getHotels={getHotels} handleClose={setIsOpen} />
       )}
 
       <h1 className="text-5xl text-purple-950 text-center mt-4 font-extrabold uppercase">
@@ -103,17 +103,18 @@ const Hotel = () => {
             <div className="col-span-1 flex flex-col gap-3">
               <Input
                 placeholder="Hotel Name:"
+                required
                 name="hotelName"
                 value={form.hotelName}
                 onChange={handleChange}
               />
               <Input
                 placeholder="City:"
+                required
                 name="city"
                 value={form.city}
                 onChange={handleChange}
               />
-              {/* Dropdown Input */}
               <div className="flex flex-col items-start space-y-2">
                 <select
                   className="min-h-10 min-w-[50vw] md:min-w-[40vw] bg-transparent placeholder:text-black border-[2px] rounded-md px-2 border-purple-950 focus:border-[3px] focus:border-purple-950 focus:scale-100"
@@ -134,6 +135,7 @@ const Hotel = () => {
             <div className="col-span-1 flex flex-col gap-3">
               <Input
                 placeholder="Distance:"
+                required
                 name="distance"
                 value={form.distance}
                 onChange={handleChange}
@@ -179,7 +181,12 @@ const Hotel = () => {
             {hotels.map((hotel) => (
               <tr key={hotel._id} className="text-center">
                 <td className="border border-purple-950 px-4 py-2">
-                  {hotel.hotelName}
+                  <Link
+                    to={`/rate/${hotel._id}`}
+                    className="text-blue-700 font-semibold hover:underline"
+                  >
+                    {hotel.hotelName}
+                  </Link>
                 </td>
                 <td className="border border-purple-950 px-4 py-2">
                   {hotel.city}
@@ -191,13 +198,13 @@ const Hotel = () => {
                   {hotel.distance}
                 </td>
                 <td
-                  className={` ${
+                  className={`${
                     hotel.isActive ? "text-green-800" : "text-red-800"
                   } border font-bold border-purple-950 px-4 py-2`}
                 >
                   {hotel.isActive ? "Available" : "Not Available"}
                 </td>
-                <td className="border border-purple-950  py-2">
+                <td className="border border-purple-950 py-2">
                   <div className="flex justify-center">
                     <button onClick={() => handleOpen(hotel._id)}>
                       <lord-icon

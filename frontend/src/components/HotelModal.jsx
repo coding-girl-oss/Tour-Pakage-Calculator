@@ -18,6 +18,7 @@ const HotelModal = ({ form, getHotels, handleClose }) => {
     setIsActive(form.isActive || false);
   };
 
+  // updating hotels
   const handleEdit = async () => {
     try {
       const response = await axiosInstance.put(`/hotel/${form._id}`, {

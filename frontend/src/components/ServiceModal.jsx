@@ -9,6 +9,7 @@ const ServiceModal = ({ form, handleClose, getServices }) => {
   const [serviceDetails, setServiceDetails] = useState(form.serviceDetails || "");
   const [isEnabled, setIsEnabled] = useState(form.isEnabled || false);
 
+  // updating service
   const handleEdit = async () => {
     try {
       const response = await axiosInstance.put(`/service/${form._id}`, {
