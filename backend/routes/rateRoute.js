@@ -17,7 +17,7 @@ router.post('/:id',verifyauth,async(req,res)=>{
 })
 
 // Route to get rates
-router.get('/:id',verifyauth,async(req,res)=>{
+router.get('/:id',async(req,res)=>{
     try {
         const rates = await Rate.find({hotelId:req.params.id})
         res.status(200).json({rates})

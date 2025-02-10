@@ -12,6 +12,7 @@ import Login from './pages/Login'
 import Service from "./pages/Service";
 import Hotel from "./pages/Hotel";
 import Rate from "./pages/Rate";
+import Pakage from "./pages/Pakage";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
 
             <Route path="/signin" element={<Signin />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/pakage" element={<Pakage/> } />
 
             <Route element={<PrivateRoute />}>
               <Route path="/profile" element={<Profile />} />

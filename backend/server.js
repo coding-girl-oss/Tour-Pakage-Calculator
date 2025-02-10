@@ -17,6 +17,9 @@ app.use("/api/v1/company", require("./routes/agentRoute"));
 app.use("/api/v1/service", require("./routes/serviceRoute"));
 app.use("/api/v1/hotel", require("./routes/hotelRoute"));
 app.use("/api/v1/hotel/rate", require("./routes/rateRoute"));
+app.use("/api/v1/display", require("./routes/displayRoute"));
+app.use("/api/v1/service-pakage", require("./routes/servicePakageRoute"));
+app.use("/api/v1/hotel-pakage", require("./routes/hotelPakageRoute"));
 
 
 app.listen(port, () => {

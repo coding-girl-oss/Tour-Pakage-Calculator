@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import bg from "/bg.jpg";
 import Home2 from "../components/Home2";
 import Typed from "typed.js";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   useEffect(() => {
@@ -33,9 +34,9 @@ const Home = () => {
             Easily calculate and customize your tour packages with our simple tool. Get started now!
           </p>
 
-          <button className="mt-6 px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-orange-500 to-purple-600 rounded-full shadow-lg hover:opacity-90 transition">
+          <Link to='/pakage' className="mt-6 px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-orange-500 to-purple-600 rounded-full shadow-lg hover:opacity-90 transition">
             Start Calculating →
-          </button>
+          </Link>
         </div>
       </div>
       <Home2 />

@@ -94,6 +94,7 @@ const Navbar = () => {
           >
             Profile
           </Link>
+     
         </div>
       )}
     </div>
