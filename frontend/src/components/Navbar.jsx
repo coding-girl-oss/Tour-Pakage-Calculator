@@ -72,6 +72,12 @@ const Navbar = () => {
           </Link>
           <Link
             className="text-white hover:border-b-2 hover:border-white hover:transition-transform py-2 w-full"
+            to="/dashboard"
+          >
+            Dashboard
+          </Link>
+          <Link
+            className="text-white hover:border-b-2 hover:border-white hover:transition-transform py-2 w-full"
             to="/agent"
           >
             Agents

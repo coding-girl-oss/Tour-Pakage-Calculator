@@ -13,6 +13,7 @@ import Service from "./pages/Service";
 import Hotel from "./pages/Hotel";
 import Rate from "./pages/Rate";
 import Pakage from "./pages/Pakage";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/agent" element={<Agent />} />
               <Route path="/service" element={<Service />} />
               <Route path="/hotel" element={<Hotel/>} />
+              <Route path="/dashboard" element={<Dashboard/>} />
               <Route path="/rate/:hotelId" element={<Rate/>} />
             </Route>
           </Routes>
